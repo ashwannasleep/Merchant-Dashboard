@@ -11,6 +11,7 @@ export function ThemeToggle() {
       variant="ghost"
       onClick={toggleTheme}
       data-testid="button-theme-toggle"
+      className="text-white/80"
     >
       {theme === "light" ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
     </Button>

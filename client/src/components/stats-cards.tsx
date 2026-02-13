@@ -19,13 +19,13 @@ interface StatsCardsProps {
 
 function StatSkeleton() {
   return (
-    <Card className="p-4">
+    <Card className="p-3">
       <div className="flex items-start justify-between gap-2">
-        <div className="space-y-2 flex-1">
+        <div className="space-y-1.5 flex-1">
           <div className="h-3 w-20 bg-muted rounded animate-pulse" />
-          <div className="h-7 w-24 bg-muted rounded animate-pulse" />
+          <div className="h-6 w-24 bg-muted rounded animate-pulse" />
         </div>
-        <div className="h-9 w-9 bg-muted rounded-md animate-pulse" />
+        <div className="h-8 w-8 bg-muted rounded animate-pulse" />
       </div>
     </Card>
   );
@@ -106,12 +106,12 @@ export function StatsCards({ stats, isLoading }: StatsCardsProps) {
   return (
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
       {items.map((item) => (
-        <Card key={item.label} className="p-4 hover-elevate">
+        <Card key={item.label} className="p-3 hover-elevate">
           <div className="flex items-start justify-between gap-2">
-            <div className="space-y-1 min-w-0">
-              <p className="text-xs text-muted-foreground truncate">{item.label}</p>
+            <div className="space-y-0.5 min-w-0">
+              <p className="text-[11px] text-muted-foreground truncate">{item.label}</p>
               <div className="flex items-center gap-2 flex-wrap">
-                <p className="text-xl font-semibold tracking-tight" data-testid={`text-stat-${item.label.toLowerCase().replace(/\s+/g, "-")}`}>
+                <p className="text-lg font-semibold tracking-tight" data-testid={`text-stat-${item.label.toLowerCase().replace(/\s+/g, "-")}`}>
                   {item.value}
                 </p>
                 {item.badge && (
@@ -121,8 +121,8 @@ export function StatsCards({ stats, isLoading }: StatsCardsProps) {
                 )}
               </div>
             </div>
-            <div className={`flex items-center justify-center w-9 h-9 rounded-md ${item.bg} shrink-0`}>
-              <item.icon className={`w-4 h-4 ${item.color}`} />
+            <div className={`flex items-center justify-center w-8 h-8 rounded ${item.bg} shrink-0`}>
+              <item.icon className={`w-3.5 h-3.5 ${item.color}`} />
             </div>
           </div>
         </Card>

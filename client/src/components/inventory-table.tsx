@@ -26,6 +26,7 @@ interface InventoryTableProps {
   products: Product[];
   isLoading: boolean;
   containerHeight?: number;
+  initialSearch?: string;
 }
 
 type SortField = "title" | "price" | "currentStock" | "daysOfStockLeft" | "avgDailySales" | "last30DaySales" | "rating";
@@ -105,7 +106,7 @@ function TableHeader({
   };
 
   return (
-    <div className="flex items-center gap-3 px-4 py-2 text-xs font-medium text-muted-foreground border-b bg-muted/50 sticky top-0 z-10">
+    <div className="flex items-center gap-3 px-3 py-1.5 text-[11px] font-medium text-muted-foreground border-b bg-muted/50 sticky top-0 z-10">
       <div className={COLUMN_WIDTHS.sku}>SKU</div>
       <button className={`${COLUMN_WIDTHS.title} flex items-center gap-1 text-left`} onClick={() => onSort("title")}>
         Product <SortIcon field="title" />
@@ -132,8 +133,8 @@ function TableHeader({
   );
 }
 
-export function InventoryTable({ products, isLoading, containerHeight = 600 }: InventoryTableProps) {
-  const [search, setSearch] = useState("");
+export function InventoryTable({ products, isLoading, containerHeight = 600, initialSearch = "" }: InventoryTableProps) {
+  const [search, setSearch] = useState(initialSearch);
   const [categoryFilter, setCategoryFilter] = useState<string>("all");
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [fulfillmentFilter, setFulfillmentFilter] = useState<string>("all");
@@ -194,7 +195,7 @@ export function InventoryTable({ products, isLoading, containerHeight = 600 }: I
       return (
         <div
           style={style}
-          className={`flex items-center gap-3 px-4 text-sm border-b transition-colors ${
+          className={`flex items-center gap-3 px-3 text-[13px] border-b transition-colors ${
             isOOS
               ? "bg-destructive/5"
               : isRisk
@@ -258,7 +259,7 @@ export function InventoryTable({ products, isLoading, containerHeight = 600 }: I
 
   return (
     <Card className="overflow-hidden">
-      <div className="p-3 border-b space-y-3">
+      <div className="p-2.5 border-b space-y-2">
         <div className="flex items-center gap-3 flex-wrap">
           <div className="relative flex-1 min-w-[200px]">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
@@ -320,7 +321,7 @@ export function InventoryTable({ products, isLoading, containerHeight = 600 }: I
       <List
         style={{ height: containerHeight }}
         rowCount={filtered.length}
-        rowHeight={44}
+        rowHeight={36}
         overscanCount={20}
         rowComponent={Row}
         rowProps={rowProps}

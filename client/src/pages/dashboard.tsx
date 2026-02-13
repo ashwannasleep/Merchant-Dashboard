@@ -32,10 +32,10 @@ export default function Dashboard() {
   const recentEvents = (events || []).slice(0, 3);
 
   return (
-    <div className="space-y-6 p-4 md:p-6 max-w-[1400px] mx-auto">
+    <div className="space-y-4 p-3 md:p-4 max-w-[1400px] mx-auto">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight">Dashboard</h1>
-        <p className="text-sm text-muted-foreground mt-1">
+        <h1 className="text-lg font-semibold tracking-tight">Dashboard</h1>
+        <p className="text-xs text-muted-foreground mt-0.5">
           Real-time overview of your Amazon merchant inventory
         </p>
       </div>
@@ -52,10 +52,10 @@ export default function Dashboard() {
         </div>
 
         <div className="space-y-4">
-          <Card className="p-4">
-            <div className="flex items-center justify-between gap-2 mb-3">
-              <h3 className="text-sm font-medium flex items-center gap-2">
-                <Flame className="w-4 h-4 text-destructive" />
+          <Card className="p-3">
+            <div className="flex items-center justify-between gap-2 mb-2">
+              <h3 className="text-[13px] font-medium flex items-center gap-2">
+                <Flame className="w-3.5 h-3.5 text-destructive" />
                 Stock Alerts
               </h3>
               <Link href="/velocity">
@@ -103,10 +103,10 @@ export default function Dashboard() {
             )}
           </Card>
 
-          <Card className="p-4">
-            <div className="flex items-center justify-between gap-2 mb-3">
-              <h3 className="text-sm font-medium flex items-center gap-2">
-                <AlertTriangle className="w-4 h-4 text-yellow-600 dark:text-yellow-400" />
+          <Card className="p-3">
+            <div className="flex items-center justify-between gap-2 mb-2">
+              <h3 className="text-[13px] font-medium flex items-center gap-2">
+                <AlertTriangle className="w-3.5 h-3.5 text-yellow-600 dark:text-yellow-400" />
                 Recent Conflicts
               </h3>
               <Link href="/conflicts">

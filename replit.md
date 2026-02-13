@@ -6,8 +6,8 @@ High-performance Amazon merchant inventory dashboard built with Express + Vite +
 ## Architecture
 - **Frontend**: React 18 + TypeScript, Wouter routing, TanStack Query, react-window (virtualization), Chart.js/react-chartjs-2, Tailwind CSS + Shadcn UI
 - **Backend**: Express.js with in-memory storage for 10,000+ mock products
-- **Theme**: Warm Paper (amber/brown tones matching Memoria project)
-- **Design**: Sidebar navigation with dark mode toggle
+- **Theme**: Amazon Seller Central design system — light gray (#f3f3f3) background, Amazon Orange (#FF9900) for primary actions, deep navy (#232f3e) sidebar/header
+- **Design**: Enterprise-dense sidebar navigation with global search bar in navy header, 4px border radius, Inter font, dark mode toggle
 
 ## Key Features
 1. **Virtualized Inventory Table** - react-window renders 10,000+ rows at 60fps with filtering/sorting

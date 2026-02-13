@@ -8,10 +8,10 @@ export default function VelocityPage() {
   });
 
   return (
-    <div className="p-4 md:p-6 max-w-[1400px] mx-auto">
-      <div className="mb-4">
-        <h1 className="text-2xl font-bold tracking-tight">Sales Velocity Predictor</h1>
-        <p className="text-sm text-muted-foreground mt-1">
+    <div className="p-3 md:p-4 max-w-[1400px] mx-auto">
+      <div className="mb-3">
+        <h1 className="text-lg font-semibold tracking-tight">Sales Velocity Predictor</h1>
+        <p className="text-xs text-muted-foreground mt-0.5">
           Predict stock-out risks based on current sales velocity and inventory levels
         </p>
       </div>

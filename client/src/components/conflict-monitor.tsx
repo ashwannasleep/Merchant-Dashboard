@@ -92,7 +92,7 @@ export function ConflictMonitor({ events, isLoading }: ConflictMonitorProps) {
       <div className="flex items-center justify-between gap-4 flex-wrap">
         <div>
           <h2 className="text-lg font-semibold">Thundering Herd Monitor</h2>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-xs text-muted-foreground">
             Track concurrent vendor stock updates and conflict resolution
           </p>
         </div>
@@ -111,35 +111,35 @@ export function ConflictMonitor({ events, isLoading }: ConflictMonitorProps) {
       </div>
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-        <Card className="p-4">
-          <div className="flex items-center gap-2 mb-1">
-            <Zap className="w-4 h-4 text-chart-1" />
-            <span className="text-xs text-muted-foreground">Total Events</span>
+        <Card className="p-3">
+          <div className="flex items-center gap-2 mb-0.5">
+            <Zap className="w-3.5 h-3.5 text-chart-1" />
+            <span className="text-[11px] text-muted-foreground">Total Events</span>
           </div>
-          <p className="text-2xl font-bold" data-testid="text-total-events">{events.length}</p>
+          <p className="text-xl font-bold" data-testid="text-total-events">{events.length}</p>
         </Card>
-        <Card className="p-4">
-          <div className="flex items-center gap-2 mb-1">
-            <AlertTriangle className="w-4 h-4 text-yellow-600 dark:text-yellow-400" />
-            <span className="text-xs text-muted-foreground">Total Conflicts</span>
+        <Card className="p-3">
+          <div className="flex items-center gap-2 mb-0.5">
+            <AlertTriangle className="w-3.5 h-3.5 text-yellow-600 dark:text-yellow-400" />
+            <span className="text-[11px] text-muted-foreground">Total Conflicts</span>
           </div>
-          <p className="text-2xl font-bold" data-testid="text-total-conflicts">{totalConflicts}</p>
+          <p className="text-xl font-bold" data-testid="text-total-conflicts">{totalConflicts}</p>
         </Card>
-        <Card className="p-4">
-          <div className="flex items-center gap-2 mb-1">
-            <ShieldCheck className="w-4 h-4 text-green-600 dark:text-green-400" />
-            <span className="text-xs text-muted-foreground">Resolution Rate</span>
+        <Card className="p-3">
+          <div className="flex items-center gap-2 mb-0.5">
+            <ShieldCheck className="w-3.5 h-3.5 text-green-600 dark:text-green-400" />
+            <span className="text-[11px] text-muted-foreground">Resolution Rate</span>
           </div>
-          <p className="text-2xl font-bold" data-testid="text-resolution-rate">
+          <p className="text-xl font-bold" data-testid="text-resolution-rate">
             {events.length ? Math.round((resolvedCount / events.length) * 100) : 0}%
           </p>
         </Card>
-        <Card className="p-4">
-          <div className="flex items-center gap-2 mb-1">
-            <Clock className="w-4 h-4 text-chart-3" />
-            <span className="text-xs text-muted-foreground">Avg Resolution</span>
+        <Card className="p-3">
+          <div className="flex items-center gap-2 mb-0.5">
+            <Clock className="w-3.5 h-3.5 text-chart-3" />
+            <span className="text-[11px] text-muted-foreground">Avg Resolution</span>
           </div>
-          <p className="text-2xl font-bold" data-testid="text-avg-duration">{avgDuration}ms</p>
+          <p className="text-xl font-bold" data-testid="text-avg-duration">{avgDuration}ms</p>
         </Card>
       </div>
 
@@ -153,9 +153,9 @@ export function ConflictMonitor({ events, isLoading }: ConflictMonitorProps) {
           </Card>
         ) : (
           events.map((event) => (
-            <Card key={event.id} className="p-4" data-testid={`card-event-${event.id}`}>
+            <Card key={event.id} className="p-3" data-testid={`card-event-${event.id}`}>
               <div className="flex items-start justify-between gap-4 flex-wrap">
-                <div className="space-y-2 flex-1 min-w-[200px]">
+                <div className="space-y-1.5 flex-1 min-w-[200px]">
                   <div className="flex items-center gap-2 flex-wrap">
                     <span className="text-sm font-medium">Herd Event #{event.id.split("_")[1]}</span>
                     {event.resolved ? (

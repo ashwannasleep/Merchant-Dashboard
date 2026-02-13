@@ -39,20 +39,20 @@ export function AppSidebar({ conflictCount = 0, lowStockCount = 0 }: AppSidebarP
 
   return (
     <Sidebar>
-      <SidebarHeader className="p-4">
+      <SidebarHeader className="px-3 py-3">
         <div className="flex items-center gap-2">
-          <div className="flex items-center justify-center w-8 h-8 rounded-md bg-primary">
-            <Zap className="w-4 h-4 text-primary-foreground" />
+          <div className="flex items-center justify-center w-7 h-7 rounded bg-primary">
+            <Zap className="w-3.5 h-3.5 text-primary-foreground" />
           </div>
           <div>
-            <h2 className="text-sm font-semibold tracking-tight">MerchantIQ</h2>
-            <p className="text-xs text-muted-foreground">Inventory Dashboard</p>
+            <h2 className="text-sm font-semibold tracking-tight text-sidebar-foreground">MerchantIQ</h2>
+            <p className="text-[11px] text-sidebar-foreground/60">Inventory Dashboard</p>
           </div>
         </div>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Navigation</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-sidebar-foreground/50 text-[10px] uppercase tracking-wider px-3">Navigation</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {navItems.map((item) => {
@@ -62,18 +62,18 @@ export function AppSidebar({ conflictCount = 0, lowStockCount = 0 }: AppSidebarP
                     <SidebarMenuButton
                       asChild
                       data-active={isActive}
-                      className={isActive ? "bg-sidebar-accent" : ""}
+                      className={isActive ? "bg-sidebar-accent text-sidebar-accent-foreground" : "text-sidebar-foreground/80"}
                     >
                       <Link href={item.url} data-testid={`link-nav-${item.title.toLowerCase().replace(/\s+/g, "-")}`}>
                         <item.icon className="w-4 h-4" />
-                        <span>{item.title}</span>
+                        <span className="text-[13px]">{item.title}</span>
                         {item.title === "Conflict Monitor" && conflictCount > 0 && (
-                          <Badge variant="destructive" className="ml-auto text-xs">
+                          <Badge variant="destructive" className="ml-auto text-[10px]">
                             {conflictCount}
                           </Badge>
                         )}
                         {item.title === "Velocity Predictor" && lowStockCount > 0 && (
-                          <Badge variant="secondary" className="ml-auto text-xs">
+                          <Badge variant="secondary" className="ml-auto text-[10px]">
                             {lowStockCount}
                           </Badge>
                         )}
@@ -86,10 +86,10 @@ export function AppSidebar({ conflictCount = 0, lowStockCount = 0 }: AppSidebarP
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter className="p-4">
-        <div className="text-xs text-muted-foreground">
+      <SidebarFooter className="px-3 py-3">
+        <div className="text-[11px] text-sidebar-foreground/50">
           <p>Mock AWS Lambda Backend</p>
-          <p className="mt-1">10,000+ SKUs Managed</p>
+          <p className="mt-0.5">10,000+ SKUs Managed</p>
         </div>
       </SidebarFooter>
     </Sidebar>

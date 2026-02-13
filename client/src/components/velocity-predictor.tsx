@@ -158,33 +158,33 @@ export function VelocityPredictor({ products, isLoading }: VelocityPredictorProp
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-        <Card className="p-4 bg-destructive/5 border-destructive/20">
-          <div className="flex items-center gap-2 mb-1">
-            <Flame className="w-4 h-4 text-destructive" />
-            <span className="text-xs text-muted-foreground">Critical Risk</span>
+        <Card className="p-3 bg-destructive/5 border-destructive/20">
+          <div className="flex items-center gap-2 mb-0.5">
+            <Flame className="w-3.5 h-3.5 text-destructive" />
+            <span className="text-[11px] text-muted-foreground">Critical Risk</span>
           </div>
-          <p className="text-2xl font-bold text-destructive" data-testid="text-critical-count">{summary.critical}</p>
+          <p className="text-xl font-bold text-destructive" data-testid="text-critical-count">{summary.critical}</p>
         </Card>
-        <Card className="p-4 bg-chart-5/5">
-          <div className="flex items-center gap-2 mb-1">
-            <AlertTriangle className="w-4 h-4 text-chart-5" />
-            <span className="text-xs text-muted-foreground">Warning</span>
+        <Card className="p-3 bg-chart-5/5">
+          <div className="flex items-center gap-2 mb-0.5">
+            <AlertTriangle className="w-3.5 h-3.5 text-chart-5" />
+            <span className="text-[11px] text-muted-foreground">Warning</span>
           </div>
-          <p className="text-2xl font-bold text-chart-5" data-testid="text-warning-count">{summary.warning}</p>
+          <p className="text-xl font-bold text-chart-5" data-testid="text-warning-count">{summary.warning}</p>
         </Card>
-        <Card className="p-4 bg-chart-1/5">
-          <div className="flex items-center gap-2 mb-1">
-            <CheckCircle className="w-4 h-4 text-chart-1" />
-            <span className="text-xs text-muted-foreground">Healthy</span>
+        <Card className="p-3 bg-chart-1/5">
+          <div className="flex items-center gap-2 mb-0.5">
+            <CheckCircle className="w-3.5 h-3.5 text-chart-1" />
+            <span className="text-[11px] text-muted-foreground">Healthy</span>
           </div>
-          <p className="text-2xl font-bold text-chart-1" data-testid="text-healthy-count">{summary.healthy}</p>
+          <p className="text-xl font-bold text-chart-1" data-testid="text-healthy-count">{summary.healthy}</p>
         </Card>
-        <Card className="p-4 bg-destructive/5 border-destructive/20">
-          <div className="flex items-center gap-2 mb-1">
-            <TrendingDown className="w-4 h-4 text-destructive" />
-            <span className="text-xs text-muted-foreground">Weekly Revenue Risk</span>
+        <Card className="p-3 bg-destructive/5 border-destructive/20">
+          <div className="flex items-center gap-2 mb-0.5">
+            <TrendingDown className="w-3.5 h-3.5 text-destructive" />
+            <span className="text-[11px] text-muted-foreground">Weekly Revenue Risk</span>
           </div>
-          <p className="text-2xl font-bold text-destructive" data-testid="text-revenue-risk">
+          <p className="text-xl font-bold text-destructive" data-testid="text-revenue-risk">
             ${(summary.totalRevenueLoss / 1000).toFixed(1)}K
           </p>
         </Card>

@@ -8,7 +8,7 @@ export default function ConflictsPage() {
   });
 
   return (
-    <div className="p-4 md:p-6 max-w-[1400px] mx-auto">
+    <div className="p-3 md:p-4 max-w-[1400px] mx-auto">
       <ConflictMonitor events={events || []} isLoading={isLoading} />
     </div>
   );
