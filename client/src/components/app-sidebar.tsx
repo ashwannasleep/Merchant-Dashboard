@@ -3,7 +3,6 @@ import {
   Box,
   LayoutDashboard,
   AlertTriangle,
-  Zap,
   TrendingUp,
 } from "lucide-react";
 import { useLocation, Link } from "wouter";
@@ -42,7 +41,7 @@ export function AppSidebar({ conflictCount = 0, lowStockCount = 0 }: AppSidebarP
       <SidebarHeader className="px-3 py-3">
         <div className="flex items-center gap-2">
           <div className="flex items-center justify-center w-7 h-7 rounded bg-primary">
-            <Zap className="w-3.5 h-3.5 text-primary-foreground" />
+            <span className="text-sm font-bold text-primary-foreground leading-none">A</span>
           </div>
           <div>
             <h2 className="text-sm font-semibold tracking-tight text-sidebar-foreground">MerchantIQ</h2>
