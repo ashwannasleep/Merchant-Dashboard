@@ -1,5 +1,6 @@
 import { useState, useMemo, useCallback } from "react";
-import { Switch, Route, useLocation } from "wouter";
+import { Router as WouterRouter, Route, Switch, useLocation } from "wouter";
+import { useHashLocation } from "wouter/use-hash-location";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider, useQuery } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -18,7 +19,9 @@ import VelocityPage from "@/pages/velocity";
 import ConflictsPage from "@/pages/conflicts";
 import type { DashboardStats, ThunderingHerdEvent } from "@shared/schema";
 
-function Router() {
+const STATIC_MODE = import.meta.env.VITE_STATIC_MODE === "true";
+
+function AppRoutes() {
   return (
     <Switch>
       <Route path="/" component={Dashboard} />
@@ -93,7 +96,7 @@ function AppLayout() {
             <ThemeToggle />
           </header>
           <main className="flex-1 overflow-auto">
-            <Router />
+            <AppRoutes />
           </main>
         </div>
       </div>
@@ -102,7 +105,7 @@ function AppLayout() {
 }
 
 function App() {
-  return (
+  const app = (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <TooltipProvider>
@@ -112,6 +115,12 @@ function App() {
       </ThemeProvider>
     </QueryClientProvider>
   );
+
+  if (STATIC_MODE) {
+    return <WouterRouter hook={useHashLocation}>{app}</WouterRouter>;
+  }
+
+  return app;
 }
 
 export default App;
