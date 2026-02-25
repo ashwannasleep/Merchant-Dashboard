@@ -45,13 +45,16 @@ const PAGE_TITLES: Record<string, string> = {
 function AppLayout() {
   const [location, setLocation] = useLocation();
   const [globalSearch, setGlobalSearch] = useState("");
+  const showReferenceDashboardLayout = location === "/";
 
   const { data: stats } = useQuery<DashboardStats>({
     queryKey: ["/api/stats"],
+    enabled: !showReferenceDashboardLayout,
   });
 
   const { data: events } = useQuery<ThunderingHerdEvent[]>({
     queryKey: ["/api/herd-events"],
+    enabled: !showReferenceDashboardLayout,
   });
 
   const conflictCount = events?.filter((e) => !e.resolved).length || 0;
@@ -72,6 +75,14 @@ function AppLayout() {
     "--sidebar-width": "15rem",
     "--sidebar-width-icon": "3rem",
   }), []);
+
+  if (showReferenceDashboardLayout) {
+    return (
+      <main className="h-screen w-full overflow-hidden">
+        <AppRoutes />
+      </main>
+    );
+  }
 
   return (
     <SidebarProvider style={style as React.CSSProperties}>
