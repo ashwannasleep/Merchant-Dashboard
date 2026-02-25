@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import type { DashboardStats, ThunderingHerdEvent } from "@shared/schema";
 import { Link, useLocation } from "wouter";
@@ -130,6 +131,7 @@ const recentConflicts = [
 
 export default function Dashboard() {
   const [location] = useLocation();
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const { data: stats } = useQuery<DashboardStats>({
     queryKey: ["/api/stats"],
   });
@@ -174,54 +176,86 @@ export default function Dashboard() {
           ? `Latest sync burst handled ${latestVendorBurst} concurrent vendor updates with full conflict resolution.`
           : `No unresolved conflict events detected. Inventory sync pipelines are healthy.`;
 
+  const sidebarContent = (isMobile: boolean) => (
+    <>
+      <div className="flex items-center gap-3 p-6">
+        <div className="flex size-7 items-center justify-center rounded-lg bg-[#4051b5]/10 text-[#4051b5]">
+          <span className="material-symbols-outlined text-lg">inventory_2</span>
+        </div>
+        <div>
+          <h1 className="text-base font-bold tracking-tight text-slate-800 dark:text-slate-200">MerchantIQ</h1>
+          <p className="text-[10px] font-medium text-slate-400">Inventory Hub</p>
+        </div>
+      </div>
+
+      <nav className="flex-1 space-y-1 px-4 py-4">
+        {navItems.map((item) => {
+          const active = location === item.href;
+          return (
+            <Link
+              key={item.label}
+              href={item.href}
+              onClick={isMobile ? () => setMobileSidebarOpen(false) : undefined}
+              className={`flex items-center gap-3 rounded-xl px-4 py-2 transition-all ${
+                active
+                  ? "bg-slate-100 font-semibold text-[#4051b5] dark:bg-slate-800"
+                  : "text-slate-500 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800/50"
+              }`}
+            >
+              <span className="material-symbols-outlined text-[20px]">{item.icon}</span>
+              <span className="text-[13px]">{item.label}</span>
+            </Link>
+          );
+        })}
+      </nav>
+
+      <div className="border-t border-slate-200 p-4 dark:border-slate-800">
+        <div className="rounded-xl bg-slate-50 p-4 dark:bg-slate-900/50">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-500">Plan Usage</p>
+          <div className="h-1.5 w-full overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700">
+            <div className="h-full w-3/4 rounded-full bg-[#4051b5]" />
+          </div>
+          <p className="mt-2 text-[10px] text-slate-500">7,500 of 10,000 SKUs used</p>
+        </div>
+      </div>
+    </>
+  );
+
   return (
     <div className="flex h-screen overflow-hidden bg-[#f6f6f8] dark:bg-[#14161e] font-sans text-slate-900 dark:text-slate-100 antialiased">
       <aside className="hidden w-64 flex-shrink-0 flex-col border-r border-slate-200 bg-white dark:border-slate-800 dark:bg-[#14161e] lg:flex">
-        <div className="flex items-center gap-3 p-6">
-          <div className="flex size-7 items-center justify-center rounded-lg bg-[#4051b5]/10 text-[#4051b5]">
-            <span className="material-symbols-outlined text-lg">inventory_2</span>
-          </div>
-          <div>
-            <h1 className="text-base font-bold tracking-tight text-slate-800 dark:text-slate-200">MerchantIQ</h1>
-            <p className="text-[10px] font-medium text-slate-400">Inventory Hub</p>
-          </div>
-        </div>
+        {sidebarContent(false)}
+      </aside>
 
-        <nav className="flex-1 space-y-1 px-4 py-4">
-          {navItems.map((item) => {
-            const active = location === item.href;
-            return (
-              <Link
-                key={item.label}
-                href={item.href}
-                className={`flex items-center gap-3 rounded-xl px-4 py-2 transition-all ${
-                  active
-                    ? "bg-slate-100 font-semibold text-[#4051b5] dark:bg-slate-800"
-                    : "text-slate-500 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800/50"
-                }`}
-              >
-                <span className="material-symbols-outlined text-[20px]">{item.icon}</span>
-                <span className="text-[13px]">{item.label}</span>
-              </Link>
-            );
-          })}
-        </nav>
-
-        <div className="border-t border-slate-200 p-4 dark:border-slate-800">
-          <div className="rounded-xl bg-slate-50 p-4 dark:bg-slate-900/50">
-            <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-500">Plan Usage</p>
-            <div className="h-1.5 w-full overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700">
-              <div className="h-full w-3/4 rounded-full bg-[#4051b5]" />
-            </div>
-            <p className="mt-2 text-[10px] text-slate-500">7,500 of 10,000 SKUs used</p>
-          </div>
-        </div>
+      <button
+        type="button"
+        aria-label="Close navigation"
+        onClick={() => setMobileSidebarOpen(false)}
+        className={`fixed inset-0 z-40 bg-slate-900/45 transition-opacity lg:hidden ${
+          mobileSidebarOpen ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+      />
+      <aside
+        className={`fixed inset-y-0 left-0 z-50 flex w-64 flex-col border-r border-slate-200 bg-white transition-transform dark:border-slate-800 dark:bg-[#14161e] lg:hidden ${
+          mobileSidebarOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        {sidebarContent(true)}
       </aside>
 
       <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
         <header className="z-10 flex h-16 items-center justify-between border-b border-slate-200 bg-white px-6 dark:border-slate-800 dark:bg-[#14161e]">
-          <div className="max-w-xl flex-1">
-            <div className="group relative">
+          <div className="flex flex-1 items-center gap-3">
+            <button
+              type="button"
+              aria-label="Open navigation"
+              onClick={() => setMobileSidebarOpen(true)}
+              className="rounded-lg p-2 text-slate-500 transition-colors hover:bg-slate-100 dark:hover:bg-slate-800 lg:hidden"
+            >
+              <span className="material-symbols-outlined">menu</span>
+            </button>
+            <div className="text-xs font-semibold tracking-wide text-slate-500 lg:hidden">MerchantIQ</div>
+            <div className="group relative max-w-xl flex-1">
               <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 transition-colors group-focus-within:text-[#4051b5]">
                 search
               </span>
