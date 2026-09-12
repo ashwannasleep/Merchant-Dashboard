@@ -31,7 +31,7 @@ export default function InventoryPage() {
       <div className="mb-3">
         <h1 className="text-lg font-semibold tracking-tight">Inventory</h1>
         <p className="text-xs text-muted-foreground mt-0.5">
-          Virtualized table rendering {(products || []).length.toLocaleString()} products at 60fps
+          Virtualized inventory table · {(products || []).length.toLocaleString()} sample products
         </p>
       </div>
       <InventoryTable

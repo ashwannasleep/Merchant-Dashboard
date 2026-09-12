@@ -12,7 +12,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import NotFound from "@/pages/not-found";
-import Dashboard from "@/pages/dashboard";
+import Replenishment from "@/pages/replenishment";
 import InventoryPage from "@/pages/inventory";
 import AnalyticsPage from "@/pages/analytics";
 import VelocityPage from "@/pages/velocity";
@@ -24,7 +24,7 @@ const STATIC_MODE = import.meta.env.VITE_STATIC_MODE === "true";
 function AppRoutes() {
   return (
     <Switch>
-      <Route path="/" component={Dashboard} />
+      <Route path="/" component={Replenishment} />
       <Route path="/inventory" component={InventoryPage} />
       <Route path="/analytics" component={AnalyticsPage} />
       <Route path="/velocity" component={VelocityPage} />
@@ -45,7 +45,7 @@ const PAGE_TITLES: Record<string, string> = {
 function AppLayout() {
   const [location, setLocation] = useLocation();
   const [globalSearch, setGlobalSearch] = useState("");
-  const showReferenceDashboardLayout = location === "/";
+  const showReferenceDashboardLayout = false;
 
   const { data: stats } = useQuery<DashboardStats>({
     queryKey: ["/api/stats"],
@@ -89,7 +89,7 @@ function AppLayout() {
       <div className="flex h-screen w-full">
         <AppSidebar conflictCount={conflictCount} lowStockCount={lowStockCount} />
         <div className="flex flex-col flex-1 min-w-0">
-          <header className="flex items-center gap-3 px-3 py-2 border-b sticky top-0 z-50 bg-[hsl(213,28%,19%)] text-white">
+          <header className="merchant-topbar flex items-center gap-3 px-3 py-2 border-b sticky top-0 z-50 text-white">
             <SidebarTrigger data-testid="button-sidebar-toggle" className="text-white/80" />
             <span className="text-sm font-medium text-white/90 shrink-0">{pageTitle}</span>
             <div className="relative flex-1 max-w-md mx-auto">

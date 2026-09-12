@@ -1,0 +1,80 @@
+/* MerchantIQ: monochrome, with a native grotesk type stack. */
+:root, .dark {
+  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --sidebar: 0 0% 7%;
+  --sidebar-foreground: 0 0% 96%;
+  --sidebar-border: 0 0% 19%;
+  --sidebar-primary: 0 0% 100%;
+  --sidebar-primary-foreground: 0 0% 7%;
+  --sidebar-accent: 0 0% 18%;
+  --sidebar-accent-foreground: 0 0% 100%;
+  --sidebar-ring: 0 0% 65%;
+  --chart-1: 0 0% 12%;
+  --chart-2: 0 0% 32%;
+  --chart-3: 0 0% 50%;
+  --chart-4: 0 0% 66%;
+  --chart-5: 0 0% 80%;
+  --destructive: 0 0% 20%;
+  --destructive-foreground: 0 0% 100%;
+}
+:root {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 8%;
+  --card-foreground: 0 0% 8%;
+  --popover-foreground: 0 0% 8%;
+  --primary: 0 0% 8%;
+  --primary-foreground: 0 0% 100%;
+  --secondary-foreground: 0 0% 20%;
+  --muted-foreground: 0 0% 40%;
+  --accent-foreground: 0 0% 8%;
+  --ring: 0 0% 25%;
+}
+.dark {
+  --background: 0 0% 9%;
+  --foreground: 0 0% 95%;
+  --card: 0 0% 12%;
+  --card-foreground: 0 0% 95%;
+  --popover: 0 0% 12%;
+  --popover-foreground: 0 0% 95%;
+  --primary: 0 0% 95%;
+  --primary-foreground: 0 0% 8%;
+  --secondary: 0 0% 18%;
+  --secondary-foreground: 0 0% 90%;
+  --muted: 0 0% 18%;
+  --muted-foreground: 0 0% 65%;
+  --accent: 0 0% 20%;
+  --accent-foreground: 0 0% 95%;
+  --border: 0 0% 25%;
+  --input: 0 0% 35%;
+  --ring: 0 0% 75%;
+}
+body, button, input, select, textarea { font-family: var(--font-sans); }
+.merchant-topbar { background: #111; }
+.merchant-topbar input { background: #262626 !important; border-color: #444 !important; }
+.replenishment h1 { font-weight: 600; letter-spacing: -.045em; }
+.replenishment h2 { font-weight: 600; }
+.workbench-eyebrow, .replenishment p, .plan-metrics span,
+.plan-metrics small, .plan-table th, .plan-table td small {
+  color: hsl(var(--muted-foreground));
+}
+.scenario-panel {
+  background: hsl(var(--muted));
+  color: hsl(var(--foreground));
+  border: 1px solid hsl(var(--border));
+  border-radius: 8px;
+}
+.data-badge, .import-strip, .replenishment button, .import-action,
+.table-toolbar input, .plan-table th, .plan-table td {
+  border-color: hsl(var(--border));
+}
+.scenario-inputs input { accent-color: hsl(var(--foreground)); }
+.scenario-inputs input[type=number] {
+  color: hsl(var(--foreground));
+  background: hsl(var(--background));
+  border: 1px solid hsl(var(--input));
+}
+.plan-metrics strong { font-weight: 600; font-variant-numeric: tabular-nums; }
+.plan-table { font-variant-numeric: tabular-nums; }
+.risk-cover { color: hsl(var(--foreground)); font-weight: 700; text-decoration: underline dotted; text-underline-offset: 4px; }
+.import-error { color: hsl(var(--foreground)) !important; font-weight: 600; }
+.replenishment :focus-visible { outline: 2px solid hsl(var(--ring)); outline-offset: 3px; }
