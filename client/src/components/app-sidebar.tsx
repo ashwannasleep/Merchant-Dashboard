@@ -44,7 +44,7 @@ export function AppSidebar({ conflictCount = 0, lowStockCount = 0 }: AppSidebarP
             <span className="text-sm font-bold text-primary-foreground leading-none">A</span>
           </div>
           <div>
-            <h2 className="text-sm font-semibold tracking-tight text-sidebar-foreground">MerchantIQ</h2>
+            <h2 className="text-sm font-semibold tracking-tight text-sidebar-foreground">Logistics &amp; Inventory Engine</h2>
             <p className="text-[11px] text-sidebar-foreground/60">Inventory Dashboard</p>
           </div>
         </div>

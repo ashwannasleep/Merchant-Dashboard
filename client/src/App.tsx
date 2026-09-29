@@ -69,7 +69,7 @@ function AppLayout() {
     [globalSearch, setLocation]
   );
 
-  const pageTitle = PAGE_TITLES[location] || "MerchantIQ";
+  const pageTitle = PAGE_TITLES[location] || "Logistics & Inventory Engine";
 
   const style = useMemo(() => ({
     "--sidebar-width": "15rem",

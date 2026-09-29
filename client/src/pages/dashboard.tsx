@@ -183,7 +183,7 @@ export default function Dashboard() {
           <span className="material-symbols-outlined text-lg">inventory_2</span>
         </div>
         <div>
-          <h1 className="text-base font-bold tracking-tight text-slate-800 dark:text-slate-200">MerchantIQ</h1>
+          <h1 className="text-base font-bold tracking-tight text-slate-800 dark:text-slate-200">Logistics &amp; Inventory Engine</h1>
           <p className="text-[10px] font-medium text-slate-400">Inventory Hub</p>
         </div>
       </div>
@@ -254,7 +254,7 @@ export default function Dashboard() {
             >
               <span className="material-symbols-outlined">menu</span>
             </button>
-            <div className="text-xs font-semibold tracking-wide text-slate-500 lg:hidden">MerchantIQ</div>
+            <div className="text-xs font-semibold tracking-wide text-slate-500 lg:hidden">Logistics &amp; Inventory Engine</div>
             <div className="group relative max-w-xl flex-1">
               <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 transition-colors group-focus-within:text-[#4051b5]">
                 search
